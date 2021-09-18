@@ -1,0 +1,25 @@
+version: '3.1'
+services:
+  database:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_DATABASE: ${DB_NAMEE}
+      MONGO_INITDB_ROOT_USERNAME: ${USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${PASSWORD}
+  app:
+    image: web-client
+    environment:
+      PORT: 3000
+    ports:
+      - 3000:3000
+
+  app2:
+    image: web-server
+    restart: always
+    environment: 
+      DB_URI: ${DB_URII}
+      DB_NAME: ${DB_NAMEE}
+      DB_COLLECTION_NAME: ${DB_COLLECTION_NAMEE}
+    ports:
+      - 8080:8080
